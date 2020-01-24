@@ -96,9 +96,55 @@ class SortingRobot:
         """
         Sort the robot's list.
         """
-        # Fill this out
-        pass
+        # Robot starts with light off.
+        while self.light_is_on() == False:
+            # Turn light on to start.
+            self.set_light_on()
+            # As long as you can move right...
+            while self.can_move_right() == True:            
+                # Robot starts at index 0. Pick up the item.
+                self.swap_item()
+                # Move right to compare.
+                self.move_right()
 
+                # If the item being held is greater than the item in front...
+                if self.compare_item() == 1:
+                    self.set_light_off()
+                    self.swap_item()
+                    self.move_left()
+                    self.swap_item()
+                    self.move_right()
+                
+                # Otherwise...
+                else:
+                    self.move_left()
+                    self.swap_item()
+                    self.move_right()
+
+            # As long as you can move left...
+            while self.can_move_left() == True:
+                self.move_left()
+
+
+# COMMENTS
+
+# Initial status of the robot.
+# The robot starts at list position 0.
+# The robot's light starts as off.
+# The robot does not start holding any items.
+
+# Things I'm thinking about...
+# What is the signiifcance of the light?
+# The robot's abilities remind me of bubble sort.
+
+# What can the robot do?  
+# The robot can move left or right.
+# It can pick up an item.
+    # If it tries to pick up an item while already holding one, it will swap the items instead.
+# It can compare the item it's holding to the item in front of it.
+
+# OBJECTIVE:
+# Write a program for the robot to sort lists using only these capabilites.
 
 if __name__ == "__main__":
     # Test our your implementation from the command line
